@@ -15,7 +15,7 @@ class controllerCalculo extends Controller
         
         $dados = array();
         
-        for($i= 1; $i <= $periodo; $i++){
+        for($i= 1; $i <= $parcelas; $i++){
             $dados[$i]['parcela'] = $i;
             $dados[$i]['valorAtualizado'] = number_format(($emprestimo + ($emprestimo * $juros)), 2, ',', '.');
             $dados[$i]['valorParcela'] = number_format(($emprestimo / $parcelas) + ($emprestimo * $juros), 2, ',', '.');
