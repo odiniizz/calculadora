@@ -13,8 +13,9 @@
             <img class="mb-4 img" src="{{asset('storage/imagem/logo.png)}}" alt=""
                 width="90" height="90">
         </div>
-        @hasSection ('content')
-        @yield('content')
+        @hasSection('content')
+            @yield('content')
+        @endif
     </div>
 </body>
 </html>
