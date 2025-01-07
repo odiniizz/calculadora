@@ -4,24 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class controllerCalculo extends Controller
+class ControllerCalculo extends Controller
 {
-    public function Calcular(Request $request)
-    {
-        $emprestimo = $request->input('emprestimo');
-        $taxa = $request->input("taxa"); 
-        $parcelas = $request->input('parcelas');
-        $juros = $taxa / 100;
-        
-        $dados = array();
-        
-        for($i= 1; $i <= $parcelas; $i++){
-            $dados[$i]['parcela'] = $i;
-            $dados[$i]['valorAtualizado'] = number_format(($emprestimo + ($emprestimo * $juros)), 2, ',', '.');
-            $dados[$i]['valorParcela'] = number_format(($emprestimo / $parcelas) + ($emprestimo * $juros), 2, ',', '.');
-            $emprestimo = $emprestimo + ($emprestimo * $juros);
-        }
-        
-        return view('resposta', compact('dados'));
+    public function calcular(Request $request)
+{
+    $nome = $request->input('nome');
+    $emprestimo = $request->input('valor_emprestimo');
+    $juros = $request->input('taxa_juros') / 100;
+    $parcelas = $request->input('quantidade_parcelas');
+
+    $saldoDevedor = $emprestimo;
+    $resultados = [];
+    $totalPago = 0;
+
+    for ($i = 1; $i <= $parcelas; $i++) {
+        $jurosMensal = $saldoDevedor * $juros;
+        $valorAtualizado = $saldoDevedor + $jurosMensal;
+        $parcela = $valorAtualizado / ($parcelas - $i + 1);
+        $saldoDevedor = $valorAtualizado - $parcela;
+
+        $resultados[] = [
+            'parcela' => $i,
+            'valor_atualizado' => number_format($valorAtualizado, 2, ',', '.'),
+            'juros' => number_format($jurosMensal, 2, ',', '.'),
+            'valor_parcela' => number_format($parcela, 2, ',', '.'),
+            'restante' => number_format($saldoDevedor, 2, ',', '.'),
+        ];
+
+        $totalPago += $parcela;
     }
+
+    $totalPago = number_format($totalPago, 2, ',', '.');
+
+    return view('resposta', compact('nome', 'emprestimo', 'resultados', 'totalPago'));
+}
 }
