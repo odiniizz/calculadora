@@ -6,17 +6,17 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3">Més</div>
-    <div class="col-md-6">Valor inicial</div>
-    <div class="col-md-3">Valor atualizado</div>
+    <div class="col-md-3">Nº da parcela</div>
+    <div class="col-md-6">Valor atualizado</div>
+    <div class="col-md-3">Valor da parcela</div>
 </div>
 
 @foreach ($dados as $item)
 
     <div>
         <div class="col-md-3"> {{$item["mes"]}} </div>
-        <div class="col-md-6"> R$ {{$item["capitalInicial"]}} </div>
-        <div class="col-md-3"> {{$item["capitalAtualizado"]}} </div>
+        <div class="col-md-6"> R$ {{$item["valorAtualizado"]}} </div>
+        <div class="col-md-3"> R$ {{$item["valorParcela"]}} </div>
     </div>
 
 @endforeach

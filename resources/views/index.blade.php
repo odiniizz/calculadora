@@ -7,13 +7,13 @@
         <div class="texto">
             <h1 class="h3 mb-3 font-weight-normal">Calcular juros ao mês</h1>
         </div>
-        <label for="capital" class="sr-only">Capital inicial: R$</label>
+        <label for="emprestimo" class="sr-only">Valor do empréstimo: R$</label>
         <input type="number" id="capital" class="form-control" name="capital"
             placeholder="100.00" min="10" required autofocus>
-        <label for="taxa" class="sr-only">Taxa fixa: %</label>
+        <label for="taxa" class="sr-only">Taxa ao mês: %</label>
         <input type="number" id="number" class="form-control" name="taxa"
             placeholder="10" min="1" required>
-        <label for="periodo" class="sr-only">Período de tempo: (meses)</label>
+        <label for="parcelas" class="sr-only">Quantidade de parcelas</label>
         <input type="number" id="number" class="form-control" name="periodo"
             placeholder="3" min="1" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Calcular</button>

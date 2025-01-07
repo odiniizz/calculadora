@@ -8,18 +8,18 @@ class controllerCalculo extends Controller
 {
     public function Calcular(Request $request)
     {
-        $capital = $request->input('capital');
+        $emprestimo = $request->input('emprestimo');
         $taxa = $request->input("taxa"); 
-        $periodo = $request->input('periodo');
+        $parcelas = $request->input('parcelas');
         $juros = $taxa / 100;
         
         $dados = array();
         
         for($i= 1; $i <= $periodo; $i++){
-            $dados[$i]['mes'] = $i;
-            $dados[$i]['capitalInicial'] = number_format($capital, 2, ',', '.');
-            $dados[$i]['capitalAtualizado'] = number_format($capital + ($capital + $juros), 2, ',', '.');
-            $capital = $capital + ($capital * $juros);
+            $dados[$i]['parcela'] = $i;
+            $dados[$i]['valorAtualizado'] = number_format(($emprestimo + ($emprestimo * $juros)), 2, ',', '.');
+            $dados[$i]['valorParcela'] = number_format(($emprestimo / $parcelas) + ($emprestimo * $juros), 2, ',', '.');
+            $emprestimo = $emprestimo + ($emprestimo * $juros);
         }
         
         return view('resposta', compact('dados'));
