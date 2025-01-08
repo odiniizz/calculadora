@@ -7,26 +7,26 @@
     <table class="table">
     <thead>
         <tr>
-            <th>Parcela</th>
+            <th>Nº da Parcela</th>
             <th>Valor Atualizado</th>
             <th>Juros</th>
             <th>Valor da Parcela</th>
-            <th>Restante</th>
+            <th>Quantidade a ser paga</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($resultados as $resultado)
+        @foreach ($dados as $item)
         <tr>
             <td>{{ $resultado['parcela'] }}</td>
-            <td>R$ {{ $resultado['valor_atualizado'] }}</td>
+            <td>R$ {{ $resultado['valorAtualizado'] }}</td>
             <td>R$ {{ $resultado['juros'] }}</td>
-            <td>R$ {{ $resultado['valor_parcela'] }}</td>
-            <td>R$ {{ $resultado['restante'] }}</td>
+            <td>R$ {{ $resultado['parcela'] }}</td>
+            <td>R$ {{ $resultado['sobra'] }}</td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<p>Total Pago: R$ {{ $totalPago }}</p>
+<p>Total Pago: R$ {{ $total }}</p>
 
 </div>
 <button onclick="window.location.href='/';" type="button" class="btn btn-lg btn-primary btn-block botao">Voltar</button>

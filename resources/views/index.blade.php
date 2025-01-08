@@ -10,16 +10,16 @@
             <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
         <div class="mb-3">
-            <label for="valor_emprestimo" class="form-label">Valor do Empréstimo</label>
-            <input type="number" step="0.01" class="form-control" id="valor_emprestimo" name="valor_emprestimo" required>
+            <label for="emprestimo" class="form-label">Valor do Empréstimo</label>
+            <input type="number" step="0.01" class="form-control" id="emprestimo" name="emprestimo" required>
         </div>
         <div class="mb-3">
-            <label for="taxa_juros" class="form-label">Taxa de Juros (%)</label>
-            <input type="number" step="0.01" class="form-control" id="taxa_juros" name="taxa_juros" required>
+            <label for="taxa" class="form-label">Taxa de Juros (%)</label>
+            <input type="number" step="0.01" class="form-control" id="taxa" name="taxa" required>
         </div>
         <div class="mb-3">
-            <label for="quantidade_parcelas" class="form-label">Quantidade de Parcelas</label>
-            <input type="number" class="form-control" id="quantidade_parcelas" name="quantidade_parcelas" required>
+            <label for="parcelas" class="form-label">Quantidade de Parcelas</label>
+            <input type="number" class="form-control" id="parcelas" name="parcelas" required>
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
     </form>
